@@ -11,6 +11,7 @@ import (
 	"time"
 
 	log "github.com/sirupsen/logrus"
+	"golang.org/x/net/proxy"
 )
 
 // LoadTest executes all HTTP requests in order concurrently
@@ -62,23 +63,39 @@ func wait(stop chan bool, timeout time.Duration, workers int) {
 func processEntries(harfile string, worker int, entries chan Entry, results chan TestResult, ignoreHarCookies bool, insecureSkipVerify bool, stop chan bool) {
 	jar, _ := cookiejar.New(nil)
 
-	httpClient := http.Client{
-		Transport: &http.Transport{
-			Dial: (&net.Dialer{
-				Timeout:   30 * time.Second,
-				KeepAlive: 30 * time.Second,
-			}).Dial,
-			TLSClientConfig:       &tls.Config{InsecureSkipVerify: insecureSkipVerify},
-			TLSHandshakeTimeout:   10 * time.Second,
-			ResponseHeaderTimeout: 10 * time.Second,
-			ExpectContinueTimeout: 1 * time.Second,
-		},
+	var dialer proxy.Dialer
+	dialer = proxy.Direct
+	proxyServer, isSet := os.LookupEnv("HTTP_PROXY")
+	if isSet {
+		proxyURL, err := url.Parse(proxyServer)
+		if err != nil {
+			msg := fmt.Sprintf("Invalid proxy url %q\n", proxyURL)
+			log.Errorln(msg)
+		}
+		dialer, err = proxy.FromURL(proxyURL, proxy.Direct)
+	}
+
+	// setup a http client
+	httpTransport := &http.Transport{
+		Dial: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		}).Dial,
+		TLSClientConfig:       &tls.Config{InsecureSkipVerify: insecureSkipVerify},
+		TLSHandshakeTimeout:   10 * time.Second,
+		ResponseHeaderTimeout: 10 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
+	}
+	httpClient := &http.Client{
+		Transport: httpTransport,
 		CheckRedirect: func(r *http.Request, via []*http.Request) error {
 			r.URL.Opaque = r.URL.Path
 			return nil
 		},
 		Jar: jar,
 	}
+	httpTransport.Dial = dialer.Dial
+
 	iter := 0
 	for {
 
