@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/magisterquis/connectproxy"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/net/proxy"
 )
@@ -63,7 +64,6 @@ func processEntries(harfile string, worker int, entries chan Entry, results chan
 	jar, _ := cookiejar.New(nil)
 
 	var dialer proxy.Dialer
-	dialer = proxy.Direct
 	proxyServer, isSet := os.LookupEnv("http_proxy")
 	if isSet {
 		proxyURL, err := url.Parse(proxyServer)
@@ -71,7 +71,12 @@ func processEntries(harfile string, worker int, entries chan Entry, results chan
 			msg := fmt.Sprintf("Invalid proxy url %q\n", proxyURL)
 			log.Errorln(msg)
 		}
-		dialer, err = proxy.FromURL(proxyURL, proxy.Direct)
+
+		dialer, err = connectproxy.New(proxyURL, proxy.Direct)
+		if err != nil {
+			msg := fmt.Sprintf("Invalid proxy connection %q\n", proxyURL)
+			log.Errorln(msg)
+		}
 	}
 
 	// setup a http client
