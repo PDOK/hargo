@@ -21,7 +21,7 @@ RUN apk add -U --no-cache ca-certificates
 RUN go build -ldflags "-s -w -X main.Version=$VERSION -X main.CommitHash=$HASH -X 'main.CompileDate=$DATE'" -o hargo ./cmd/hargo
 
 # final stage
-FROM scratch
+FROM debian:stretch
 
 WORKDIR /
 ENV PATH=/
