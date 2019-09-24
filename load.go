@@ -3,7 +3,6 @@ package hargo
 import (
 	"crypto/tls"
 	"fmt"
-	"net"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -77,10 +76,6 @@ func processEntries(harfile string, worker int, entries chan Entry, results chan
 
 	// setup a http client
 	httpTransport := &http.Transport{
-		Dial: (&net.Dialer{
-			Timeout:   30 * time.Second,
-			KeepAlive: 30 * time.Second,
-		}).Dial,
 		TLSClientConfig:       &tls.Config{InsecureSkipVerify: insecureSkipVerify},
 		TLSHandshakeTimeout:   10 * time.Second,
 		ResponseHeaderTimeout: 10 * time.Second,
