@@ -65,7 +65,7 @@ func processEntries(harfile string, worker int, entries chan Entry, results chan
 
 	var dialer proxy.Dialer
 	dialer = proxy.Direct
-	proxyServer, isSet := os.LookupEnv("HTTP_PROXY")
+	proxyServer, isSet := os.LookupEnv("http_proxy")
 	if isSet {
 		proxyURL, err := url.Parse(proxyServer)
 		if err != nil {
