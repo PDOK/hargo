@@ -3,6 +3,7 @@ package hargo
 import (
 	"crypto/tls"
 	"fmt"
+	"net"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -77,6 +78,11 @@ func processEntries(harfile string, worker int, entries chan Entry, results chan
 			msg := fmt.Sprintf("Invalid proxy connection %q\n", proxyURL)
 			log.Errorln(msg)
 		}
+	} else {
+		dialer = (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		})
 	}
 
 	// setup a http client
