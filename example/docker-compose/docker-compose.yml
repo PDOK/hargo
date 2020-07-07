@@ -4,7 +4,7 @@ services:
     build:
       context: ../../  
     image: hargo
-    command: hargo load -d 300 -u=http://influxdb:8086/hargo /test/ozon.har
+    command: hargo load -d 600 -w 1 -u=http://influxdb:8086/hargo /test/ozon.har
     volumes:
       - ../../test:/test
     depends_on:
