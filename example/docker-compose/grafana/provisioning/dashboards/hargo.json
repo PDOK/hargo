@@ -196,6 +196,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:55",
           "format": "ms",
           "label": "",
           "logBase": 1,
@@ -204,6 +205,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:56",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -531,264 +533,6 @@
         "x": 16,
         "y": 0
       },
-      "id": 12,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        }
-      },
-      "pluginVersion": "7.0.4",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "test_result",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "Latency"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "stddev"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Overall stdev latency",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 14,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        }
-      },
-      "pluginVersion": "7.0.4",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "test_result",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "Latency"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Overall median latency",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 3
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        }
-      },
-      "pluginVersion": "7.0.4",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "test_result",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "Latency"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Nr of requests",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 16,
-        "y": 3
-      },
       "id": 16,
       "options": {
         "colorMode": "value",
@@ -850,6 +594,92 @@
       "type": "stat"
     },
     {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.4",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "test_result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "Latency"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "count"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Nr of requests",
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -867,7 +697,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 6
+        "y": 3
       },
       "hiddenSeries": false,
       "id": 4,
@@ -978,57 +808,43 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "description": "latency in ms on x-axis",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
+          "custom": {}
         },
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 5,
+        "w": 24,
         "x": 0,
-        "y": 9
+        "y": 11
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 18,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
-        "values": false
+        "values": true
       },
-      "lines": true,
-      "linewidth": 2,
+      "lines": false,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pluginVersion": "7.0.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1038,20 +854,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "groupBy": [
-            {
-              "params": [
-                "1m"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "0"
-              ],
-              "type": "fill"
-            }
-          ],
+          "alias": "frequency",
+          "groupBy": [],
           "measurement": "test_result",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1064,10 +868,6 @@
                   "Latency"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
               }
             ]
           ],
@@ -1076,40 +876,52 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
+      "timeRegions": [
+        {
+          "$$hashKey": "object:121",
+          "colorMode": "background6",
+          "fill": true,
+          "fillColor": "rgba(234, 112, 112, 0.12)",
+          "line": false,
+          "lineColor": "rgba(237, 46, 24, 0.60)",
+          "op": "time"
+        }
+      ],
       "timeShift": null,
-      "title": "Mean latency per minute",
+      "title": "Histogram latency",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
-        "mode": "time",
+        "buckets": 1000,
+        "max": 1000,
+        "min": 0,
+        "mode": "histogram",
         "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "$$hashKey": "object:220",
-          "format": "ms",
-          "label": null,
+          "$$hashKey": "object:278",
+          "format": "short",
+          "label": "frequency",
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:221",
+          "$$hashKey": "object:279",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
